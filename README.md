@@ -1,4 +1,4 @@
-# 🏢 Document Search Platform using Agentic RAG
+# 🏢 Chat With Your Docs using  RAG
 
 
 ## 📄 User Query Flow
