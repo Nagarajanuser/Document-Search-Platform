@@ -1,21 +1,16 @@
 
 
 # RAG
-# Pinecone vector databse
-# FastAPI
-# Langchain
-# Langgraph
 
 # Question Validation Node
-# Hybrid Intent Detection ( Rule-based + Semantic)
+# Hybrid Intent Detection 
 # Hybrid Intent Detection Node with add_conditional_edges 
-# Query Classification (LLM)
-# History-aware query rewriting (Conversation Memory or Chat Memory)
-# Hybrid Query Rewriting (Rule-Based Query Rewriting and LLM based) + Canonical Rewrite
-# Semantic Cacher (Semantic)
-# Hybrid Search (Semantic + Keword + meta data)
+# Query Classification 
+# History-aware query rewriting 
+# Hybrid Query Rewriting 
+# Semantic Cacher
+# Hybrid Search 
 # Cross Encoder Reranking
-# Metadata Filtering
 # Answer Generation
 
 
@@ -67,15 +62,7 @@ pip install langchain-ollama
 pip install fastapi
 pip install uvicorn
 
-# Langsmith
-pip install langsmith
 
-
-# RAGAS Evaluation
-pip install ragas==0.2.15
-pip install datasets
-
-pip uninstall ragas
 
 # To semantic cache
 pip install langchain-pinecone
@@ -92,52 +79,12 @@ pip install pdfplumber
 https://github.com/UB-Mannheim/tesseract/wiki
 
 
-# To create index - create a index in pinecone vector database
-python create_index.py
-
-# To Delete index - Delete a index in pinecone vector database
-python delete_index_data.py
-
-# To Upload doc to pinecone vector database
-python upload_doc.py
-
-
 # To run API
 uvicorn main:app --reload
 
-# Ragas Evaluation
-python evaluation/evaluate_ragas.py 
 
 
-
-# History-aware Query Rewriting 
-```text
-User Question
-      │
-      ▼
-History Rewrite Node
-      │
-      ▼
-is_followup_question()
-      │
-      ├────────── False ──────────► history_question = original question
-      │                                  │
-      │                                  ▼
-      │                           Hybrid Query Rewrite
-      │
-      └────────── True ───────────► Load Chat History
-                                         │
-                                         ▼
-                                  History Rewrite LLM
-                                         │
-                                         ▼
-                                 history_question
-                                         │
-                                         ▼
-                                  Hybrid Query Rewrite
-```
-
-# My final RAG Application
+# RAG 
 ```text
                     Start
                       │
