@@ -1,0 +1,168 @@
+<div class="app-layout" (click)="closeDropdowns()">
+  <!-- Left Sidebar -->
+  <div class="sidebar transition-all" [class.collapsed]="isSidebarCollapsed()">
+    <!-- Brand Info -->
+    <div class="brand-area">
+      <i class="bi bi-stars fs-3 text-primary me-2 brand-logo"></i>
+      <span class="fw-bold fs-5 text-white brand-text">Docs</span>
+    </div>
+
+    <!-- Navigation Menus -->
+    <div class="sidebar-nav">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-grid-1x2"></i>
+        <span class="nav-text">Dashboard</span>
+      </a>
+      
+      <a routerLink="/attendance" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-calendar3"></i>
+        <span class="nav-text">Attendance</span>
+      </a>
+      
+      <a routerLink="/leave-management" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-calendar-range"></i>
+        <span class="nav-text">Leave Management</span>
+      </a>
+      
+      <a routerLink="/payroll" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-credit-card"></i>
+        <span class="nav-text">Payroll</span>
+      </a>
+      
+      <a routerLink="/recruitment" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-briefcase"></i>
+        <span class="nav-text">Recruitment</span>
+      </a>
+      
+      <a routerLink="/performance-management" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-bar-chart"></i>
+        <span class="nav-text">Performance</span>
+      </a>
+      
+      <a routerLink="/learning-development" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-mortarboard"></i>
+        <span class="nav-text">Learning & Dev</span>
+      </a>
+      
+      <a routerLink="/employee-documents" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-folder2-open"></i>
+        <span class="nav-text">Documents</span>
+      </a>
+      
+      <a routerLink="/ingest" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-cloud-arrow-up"></i>
+        <span class="nav-text">Ingest</span>
+      </a>
+      
+      <a routerLink="/benefits" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-shield-check"></i>
+        <span class="nav-text">Benefits</span>
+      </a>
+      
+      <a routerLink="/help-desk" routerLinkActive="active" class="nav-link">
+        <i class="bi bi-patch-question"></i>
+        <span class="nav-text">Help Desk</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Right Side Content Area -->
+  <div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header glass-header">
+      <div class="d-flex align-items-center">
+        <!-- Sidebar toggle button -->
+        <button class="btn btn-link text-secondary p-0 border-0 me-3 shadow-none" (click)="toggleSidebar(); $event.stopPropagation();">
+          <i class="bi bi-list fs-3"></i>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="d-none d-md-flex align-items-center bg-light px-3 py-2 rounded-pill" style="width: 280px;">
+          <i class="bi bi-search text-muted me-2 small"></i>
+          <input type="text" class="form-control bg-transparent border-0 p-0 shadow-none small" placeholder="Search portal...">
+        </div>
+      </div>
+
+      <!-- Right Header Actions -->
+      <div class="d-flex align-items-center">
+        <!-- Notification Dropdown -->
+        <div class="position-relative me-3">
+          <button class="btn btn-link text-secondary position-relative p-1 border-0 shadow-none" (click)="toggleNotifications(); $event.stopPropagation();">
+            <i class="bi bi-bell fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-white" style="font-size: 0.65rem; padding: 0.25em 0.4em;">
+              3
+            </span>
+          </button>
+
+          <!-- Notification Menu Card -->
+          <div class="dropdown-menu-custom dropdown-notifications p-3 show" *ngIf="isNotificationsOpen()">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold mb-0 text-dark">Notifications</h6>
+              <span class="text-primary small fw-semibold cursor-pointer">Mark all read</span>
+            </div>
+            
+            <div class="list-group list-group-flush small">
+              <div class="list-group-item px-0 py-2 border-light-subtle">
+                <p class="mb-1 text-dark fw-semibold">Leave Approved</p>
+                <span class="text-muted small">Your request for annual leave is approved.</span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-light-subtle">
+                <p class="mb-1 text-dark fw-semibold">Payroll processed</p>
+                <span class="text-muted small">Payslip for June 2026 is available.</span>
+              </div>
+              <div class="list-group-item px-0 py-2 border-light-subtle">
+                <p class="mb-1 text-dark fw-semibold">L&D: Course Enrolled</p>
+                <span class="text-muted small">You enrolled in Angular 21 Deep Dive.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar Menu Dropdown -->
+        <div class="position-relative">
+          <button class="avatar-btn shadow-none" (click)="toggleAvatarDropdown(); $event.stopPropagation();">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm cursor-pointer" style="width: 36px; height: 36px;">
+              JD
+            </div>
+          </button>
+
+          <!-- Avatar Dropdown Menu Card -->
+          <div class="dropdown-menu-custom p-3 show" *ngIf="isAvatarDropdownOpen()">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 44px; height: 44px;">
+                JD
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0 text-dark">John Doe</h6>
+                <p class="text-muted small mb-0">john.doe&#64;company.com</p>
+              </div>
+            </div>
+            
+            <hr class="text-light-subtle my-2">
+
+            <div class="list-group list-group-flush small">
+              <a routerLink="/personal-info" (click)="closeDropdowns()" class="list-group-item list-group-item-action px-0 py-2 border-0 d-flex align-items-center">
+                <i class="bi bi-person-circle fs-5 me-2 text-muted"></i> Personal Info
+              </a>
+              <a href="javascript:void(0)" (click)="closeDropdowns()" class="list-group-item list-group-item-action px-0 py-2 border-0 d-flex align-items-center">
+                <i class="bi bi-gear fs-5 me-2 text-muted"></i> Account Settings
+              </a>
+              <a href="javascript:void(0)" (click)="closeDropdowns()" class="list-group-item list-group-item-action px-0 py-2 border-0 d-flex align-items-center text-danger">
+                <i class="bi bi-box-arrow-right fs-5 me-2 text-danger"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Viewport Router Outlet -->
+    <div class="content-viewport flex-grow-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- Floating Chatbot Widget Component -->
+  <app-chatbot></app-chatbot>
+</div>

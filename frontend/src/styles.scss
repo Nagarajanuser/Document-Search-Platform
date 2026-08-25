@@ -1,0 +1,98 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary-color: #0b0f19;
+  --accent-color: #22d3ee;
+  --background-light: #090d16;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 70px;
+  --header-height: 70px;
+}
+
+body {
+  background-color: var(--background-light) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #cbd5e1 !important;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover animation */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Glassmorphism utility */
+.glass-header {
+  background: rgba(17, 24, 39, 0.8) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Dark theme adjustments and Bootstrap overrides */
+[data-bs-theme="dark"] {
+  .bg-white {
+    background-color: #111827 !important;
+  }
+  .bg-light {
+    background-color: #1f2937 !important;
+  }
+  .text-dark {
+    color: #f8fafc !important;
+  }
+  .text-gray-800 {
+    color: #f1f5f9 !important;
+  }
+  .table-light {
+    --bs-table-bg: #1f2937 !important;
+    --bs-table-color: #cbd5e1 !important;
+  }
+  .list-group-item {
+    background-color: transparent !important;
+    color: #cbd5e1 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+  .card {
+    background-color: #111827 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
+  }
+  .form-control, .form-select {
+    background-color: #1f2937 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    
+    &:focus {
+      background-color: #1f2937 !important;
+      border-color: var(--primary-color) !important;
+      color: #f8fafc !important;
+      box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25) !important;
+    }
+  }
+}
